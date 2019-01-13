@@ -1,7 +1,10 @@
 class HistoriesController < ApplicationController
  before_action :authenticate_user!
   def index
-   @histories = History.where(user_id: current_user.id)
-   @histories = History.page(params[:page]).per(10)  
-  end
+   @search = History.ransack(params[:q])
+   @histories = @search.result.page(params[:page]).per(10)  
+ #  @histories = History.order('quantity,total_amount,date')  
+end
+
+
 end

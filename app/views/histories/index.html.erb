@@ -6,16 +6,14 @@
   <div class="row">
     <div class="col-md-offset3 col-md-6"> 
          <tr>
-           <th>ユーザーID</th>
-           <th>商品ID</th>
-           <th>商品名</th>
-           <th>購入数</th>
-           <th>合計金額</th>
-           <th>購入日付</th>
+           <th><%= sort_link(@search, :item_id) do  %>商品ID<% end %></th>
+           <th><%= sort_link(@search, :item_item) do %>商品名<% end %></th>
+           <th><%= sort_link(@search, :quantity) do %>購入数<% end %></th>
+           <th><%= sort_link(@search, :total_amount) do %>合計金額<% end %></th>
+           <th><%= sort_link(@search, :date) do %>購入日付<% end %></th>
          </tr> 
         <% @histories.each do |history| %>
           <tr>
-            <td><%= history.user.id %></td>
             <td><%= history.item.id %></td>
             <td><%= history.item.item %></td>
             <td><%= history.quantity %></td>

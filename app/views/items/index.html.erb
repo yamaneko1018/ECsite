@@ -6,26 +6,26 @@
 
        <%= search_form_for @search do |f| %>
          <%= f.label :item_cont, "商品名" %>
-         <%= f.search_field :item_cont %>
+         <%= f.search_field :item_cont, value:@item %>
          <br />
          <%= f.label :item_kana_cont, "商品名よみ" %>
-         <%= f.search_field :item_kana_cont %>
+         <%= f.search_field :item_kana_cont, value:@item_kana %>
          <br />
 
          <%= f.label :stock_gteq, "在庫数" %>
-         <%= f.number_field :stock_gteq %>
+         <%= f.number_field :stock_gteq, value:@stock %>
          <br />
 
          <%= f.label :stock_lteq, "~" %>
-         <%= f.number_field :stock_lteq %>
+         <%= f.number_field :stock_lteq, value:@stock %>
          <br />
 
          <%= f.label :price_gteq, "価格" %>
-         <%= f.number_field :price_gteq %>
+         <%= f.number_field :price_gteq, value:@price %>
          <br />
 
          <%= f.label :price_lteq, "~" %>
-         <%= f.number_field :price_lteq %>
+         <%= f.number_field :price_lteq, value:@price %>
          <br />
     
          <%= f.check_box :stock_gteq %>
@@ -58,7 +58,7 @@
          </tr>
          <% end %>
        </table >
-       <%= paginate(@page) %>
+       <%= paginate(@items) %>
       </div>
     </div>
   </div>
