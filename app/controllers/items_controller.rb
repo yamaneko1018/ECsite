@@ -2,8 +2,9 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @q = Item.ransack(params[:q])
-    @items = @q.result
+    @search = Item.ransack(params[:q])
+    @items = @search.result
+    @page = Item.page(params[:page]).per(10)
   end
 
 

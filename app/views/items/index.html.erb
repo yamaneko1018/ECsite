@@ -4,7 +4,7 @@
       <div class="col-md-4">
         <h3>検索フォーム</h3>
 
-       <%= search_form_for @q do |f| %>
+       <%= search_form_for @search do |f| %>
          <%= f.label :item_cont, "商品名" %>
          <%= f.search_field :item_cont %>
          <br />
@@ -42,11 +42,11 @@
        <div class="col-md-6">
         <table border="1" >
           <tr>
-          <th>商品名</th>
-          <th>商品名(よみ)</th>
-          <th>在庫数</th>
-          <th>単価</th>
-          <th>状態</th>
+          <th><%= sort_link(@search, :item) %></th>
+          <th><%= sort_link(@search, :item_kana) %></th>
+          <th><%= sort_link(@search, :stock) %></th>
+          <th><%= sort_link(@search, :price) %></th>
+          <th><%= sort_link(@search, :flag) %></th>
           </tr>
          <% @items.each do |item| %>
          <tr>
@@ -58,6 +58,7 @@
          </tr>
          <% end %>
        </table >
+       <%= paginate(@page) %>
       </div>
     </div>
   </div>
