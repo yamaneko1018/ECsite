@@ -6,4 +6,5 @@ class Item < ApplicationRecord
   self.stock - input.to_i
  end
 
+ 
 end

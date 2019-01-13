@@ -8,8 +8,7 @@ class ItemsController < ApplicationController
 
 
   def show
-    @item = Item.find(params[:id])
-    @stock = Item.find(params[:id]).stock
+    @item = Item.find(params[:id])    
   end
 
 
@@ -21,15 +20,11 @@ class ItemsController < ApplicationController
 
 
   def update 
-     a = item_params
-     logger.debug a
-#     binding.pry
-     @item = Item.find(params[:id])
-     stock = @item.set_order(params[:item][:stock])
-     @item.update(stock: stock)
-     if @item.invalid?
-     render :show
-     else 
+    @item = Item.find(params[:id])
+    stock = @item.set_order(item_params[:stock])
+    @item.stock = stock
+    if @item.valid?
+      @item.update(stock: stock)
       buy = History.new
       buy.user_id = current_user.id
       buy.item_id = @item.id
@@ -38,7 +33,10 @@ class ItemsController < ApplicationController
       buy.date = Time.now
       buy.save
       redirect_to complete_items_path
-     end
+    else
+      @item.stock = params[:item][:stock].to_i
+      render :show
+    end
   end
 
   def complete

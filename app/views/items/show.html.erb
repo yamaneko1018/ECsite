@@ -1,6 +1,16 @@
 <% if @item.errors.any? %>
- <%= @item.errors.messages %>
+  <div id="error_explanation" class="alert alert-danger">
+  <ul>
+    <% @item.errors.messages.each do |msg| %>
+      <% msg[1].each do |m| %>
+      <%= m %>
+      <% end %>
+    <% end %>
+  </ul>
+  </div>
 <% end %>
+
+
 
 <h1>商品詳細情報</h1>
 
