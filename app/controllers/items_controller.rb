@@ -33,6 +33,7 @@ class ItemsController < ApplicationController
       buy.date = Time.now
       buy.save
       redirect_to complete_items_path
+      NoticeMailer.sendmail_item(@item).deliver
     else
       @item.stock = params[:item][:stock].to_i
       render :show
