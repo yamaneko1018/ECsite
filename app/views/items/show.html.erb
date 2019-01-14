@@ -19,8 +19,9 @@
  <p>詳細情報: <%= @item.detail %></p>
 
 
- <%= form_with(model: @item, local: true) do |f| %>
+ <%= form_with model: @item, url: {action: "confirm"}, local: true do |f| %>
    <p>購入数</p> <%= f.number_field :stock,  min:1,max:9 %>
+   <%= f.hidden_field :id %>
    <%= f.submit "購入する" %>
  <% end %>  
 

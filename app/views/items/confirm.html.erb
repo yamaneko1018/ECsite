@@ -1,9 +1,24 @@
 <h3>以下の内容で確定する</h3>
 
-<%= form_for(@item) do |f| %>
- <%= f.hidden_field :stock %>
- 
-
- <p>購入数</p> <%= f.number_field :stock,  min:1,max:9 %>
- <%= f.submit "購入する" %>
+<%= form_with(model: @item, local: true) do |f| %>
+ <div>
+  商品: <%= @item.item %>
+  <%= f.hidden_field :item %>
+ </div>
+ <div>
+  詳細: <%= @item.detail %>
+  <%= f.hidden_field :detail %>
+ </div>
+ <div>
+  数量: <%= params[:item][:stock].to_i %>
+  <%= f.hidden_field :stock,value: params[:item][:stock].to_i %>
+ </div>
+ <div>
+  <%= f.submit "購入する" %>
+ </div>
+ <div>
+  <%= f.submit "戻る", name: 'back' %>
+ </div>
  <% end %>
+
+
