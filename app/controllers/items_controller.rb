@@ -2,8 +2,15 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @search = Item.ransack(params[:q])
-    @items = @search.result.page(params[:page]).per(10)
+    if params[:q].present?
+      cookies[:search] = JSON.generate(params[:q].permit!.to_h)
+    end
+      @msg = JSON.parse cookies[:search]
+      @search = Item.ransack(@msg)
+      @items = @search.result.page(params[:page]).per(10)
+    if params[:clear]
+      @
+    end
   end
 
 

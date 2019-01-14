@@ -6,7 +6,7 @@
 
        <%= search_form_for @search do |f| %>
          <%= f.label :item_cont, "商品名" %>
-         <%= f.search_field :item_cont, value:@item %>
+         <%= f.text_field :item_cont %>
          <br />
          <%= f.label :item_kana_cont, "商品名よみ" %>
          <%= f.search_field :item_kana_cont, value:@item_kana %>
@@ -36,6 +36,7 @@
          <%= f.label :flag, "販売中" %>
          <br />
          <%= f.submit %>
+         <%= f.submit "クリア", name: 'clear' %>
        <% end %>
        </div>
 
