@@ -5,13 +5,16 @@ class ItemsController < ApplicationController
     if params[:q].present?
       cookies[:search] = JSON.generate(params[:q].permit!.to_h)
     end
-      @msg = JSON.parse cookies[:search]
-      @search = Item.ransack(@msg)
-      @items = @search.result.page(params[:page]).per(10)
     if params[:clear]
-      @
+      cookies.delete :search
     end
+    unless cookies[:search].nil?
+      @msg = JSON.parse cookies[:search]
+    end
+    @search = Item.ransack(@msg)
+    @items = @search.result.page(params[:page]).per(10)
   end
+
 
 
   def show
