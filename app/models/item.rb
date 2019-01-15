@@ -5,6 +5,6 @@ class Item < ApplicationRecord
  def set_order(input)
   self.stock - input.to_i
  end
-
+ attr_accessor :input
  
 end

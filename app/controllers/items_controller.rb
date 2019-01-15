@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_item, only:[:show,:update]
 
   def index
     if params[:q].present?
@@ -18,40 +19,39 @@ class ItemsController < ApplicationController
 
 
   def show
-    @item = Item.find(params[:id])    
+    @item = Item.find(params[:id])
   end
 
 
   def confirm
    @item = Item.find(params[:item][:id])
-   stock = @item.set_order(item_params[:stock])
+   @item.input = item_params[:input]
+   stock = @item.set_order(item_params[:input])
    @item.stock = stock
    render :show if @item.invalid?
   end
 
 
   def update
+    @item = Item.find(params[:id])
     if params[:back]
-      @item = Item.find(params[:id])
-      @item.stock = params[:item][:stock].to_i
+      @item.input = item_params[:input]
       render :show
     else   
-      @item = Item.find(params[:id])
-      stock = @item.set_order(item_params[:stock])
+      stock = @item.set_order(item_params[:input])
       @item.stock = stock
       if @item.valid?
         @item.update(stock: stock)
         buy = History.new
-        buy.user_id = current_user.id
         buy.item_id = @item.id
-        buy.quantity = params[:item][:stock].to_i
-        buy.total_amount = @item.price * params[:item][:stock].to_i
+        buy.quantity = item_params[:input]
+        buy.total_amount = @item.price * item_params[:input].to_i
         buy.date = Time.now
         buy.save
         redirect_to complete_items_path
         NoticeMailer.sendmail_item(@item).deliver
       else
-        @item.stock = params[:item][:stock].to_i
+        @item.input = item_params[:input]
         render :show
       end
     end
@@ -63,7 +63,11 @@ class ItemsController < ApplicationController
 
   private
     def item_params
-     params.require(:item).permit(:stock)
+     params.require(:item).permit(:input)
     end
-
+   
+   def set_item
+     @item = Item.find(params[:id])
+     @item.input = 1
+   end
 end

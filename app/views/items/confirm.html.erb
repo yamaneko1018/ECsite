@@ -10,8 +10,8 @@
   <%= f.hidden_field :detail %>
  </div>
  <div>
-  数量: <%= params[:item][:stock].to_i %>
-  <%= f.hidden_field :stock,value: params[:item][:stock].to_i %>
+  数量: <%=@item.input.to_i %>
+  <%= f.hidden_field :input %>
  </div>
  <div>
   <%= f.submit "購入する" %>
