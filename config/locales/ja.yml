@@ -8,6 +8,13 @@ ja:
       truncate: "..."
   activerecord:
     errors:
+      models:
+        item:
+          attributes:
+            stock:
+              greater_than: '在庫がありません'
+            input:
+              greater_than_or_equal_to: '1以上を入力してください。'
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
         restrict_dependent_destroy:
@@ -131,7 +138,7 @@ ja:
       less_than: は%{count}より小さい値にしてください
       less_than_or_equal_to: は%{count}以下の値にしてください
       model_invalid: 'バリデーションに失敗しました: %{errors}'
-      not_a_number: は数値で入力してください
+      not_a_number: 1以上を入力してください
       not_an_integer: は整数で入力してください
       odd: は奇数にしてください
       other_than: は%{count}以外の値にしてください
