@@ -1,0 +1,15 @@
+current directory: /app/rails/sample/ecsite/vendor/bundle/ruby/2.6.0/gems/bindex-0.5.0/ext/bindex
+/usr/local/rbenv/versions/2.6.0/bin/ruby -I /usr/local/rbenv/versions/2.6.0/lib/ruby/2.6.0 -r ./siteconf20190203-22307-93t4fb.rb extconf.rb
+creating Makefile
+
+current directory: /app/rails/sample/ecsite/vendor/bundle/ruby/2.6.0/gems/bindex-0.5.0/ext/bindex
+make "DESTDIR=" clean
+
+current directory: /app/rails/sample/ecsite/vendor/bundle/ruby/2.6.0/gems/bindex-0.5.0/ext/bindex
+make "DESTDIR="
+compiling cruby.c
+linking shared-object bindex/cruby.so
+
+current directory: /app/rails/sample/ecsite/vendor/bundle/ruby/2.6.0/gems/bindex-0.5.0/ext/bindex
+make "DESTDIR=" install
+/bin/install -c -m 0755 cruby.so ./.gem.20190203-22307-5utccl/bindex

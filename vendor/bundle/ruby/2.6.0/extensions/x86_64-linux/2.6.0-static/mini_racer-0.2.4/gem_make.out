@@ -1,0 +1,35 @@
+current directory: /app/rails/sample/ecsite/vendor/bundle/ruby/2.6.0/gems/mini_racer-0.2.4/ext/mini_racer_extension
+/usr/local/rbenv/versions/2.6.0/bin/ruby -I /usr/local/rbenv/versions/2.6.0/lib/ruby/2.6.0 -r ./siteconf20190203-3556-1xv9dj3.rb extconf.rb
+checking for -lpthread... yes
+creating Makefile
+
+current directory: /app/rails/sample/ecsite/vendor/bundle/ruby/2.6.0/gems/mini_racer-0.2.4/ext/mini_racer_extension
+make "DESTDIR=" clean
+
+current directory: /app/rails/sample/ecsite/vendor/bundle/ruby/2.6.0/gems/mini_racer-0.2.4/ext/mini_racer_extension
+make "DESTDIR="
+compiling mini_racer_extension.cc
+cc1plus: 警告: コマンドラインオプション ‘-Wimplicit-int’ は C/ObjC 用としては有効ですが、C++ 用としては有効ではありません [デフォルトで有効]
+In file included from /usr/local/rbenv/versions/2.6.0/include/ruby-2.6.0/ruby/ruby.h:29:0,
+                 from /usr/local/rbenv/versions/2.6.0/include/ruby-2.6.0/ruby.h:33,
+                 from mini_racer_extension.cc:2:
+/usr/local/rbenv/versions/2.6.0/include/ruby-2.6.0/ruby/defines.h:388:44: 警告: リテラルの接尾辞が無効です。C++11 では、リテラルと識別子の間にスペースを入れる必要があります。 [-Wliteral-suffix]
+ #   define EXTERN __pragma(message(__FILE__"("STRINGIZE(__LINE__)"): warning: "\
+                                            ^
+In file included from /usr/local/rbenv/versions/2.6.0/include/ruby-2.6.0/ruby/intern.h:24:0,
+                 from /usr/local/rbenv/versions/2.6.0/include/ruby-2.6.0/ruby/ruby.h:2111,
+                 from /usr/local/rbenv/versions/2.6.0/include/ruby-2.6.0/ruby.h:33,
+                 from mini_racer_extension.cc:2:
+/usr/local/rbenv/versions/2.6.0/include/ruby-2.6.0/ruby/defines.h:388:44: 警告: リテラルの接尾辞が無効です。C++11 では、リテラルと識別子の間にスペースを入れる必要があります。 [-Wliteral-suffix]
+ #   define EXTERN __pragma(message(__FILE__"("STRINGIZE(__LINE__)"): warning: "\
+                                            ^
+cc1plus: 警告: 認識できないコマンドラインオプション "-Wno-tautological-compare" です [デフォルトで有効]
+cc1plus: 警告: 認識できないコマンドラインオプション "-Wno-self-assign" です [デフォルトで有効]
+cc1plus: 警告: 認識できないコマンドラインオプション "-Wno-parentheses-equality" です [デフォルトで有効]
+cc1plus: 警告: 認識できないコマンドラインオプション "-Wno-constant-logical-operand" です [デフォルトで有効]
+cc1plus: 警告: 認識できないコマンドラインオプション "-Wno-cast-function-type" です [デフォルトで有効]
+linking shared-object mini_racer_extension.so
+
+current directory: /app/rails/sample/ecsite/vendor/bundle/ruby/2.6.0/gems/mini_racer-0.2.4/ext/mini_racer_extension
+make "DESTDIR=" install
+/bin/install -c -m 0755 mini_racer_extension.so ./.gem.20190203-3556-1vvy6x8
