@@ -27,6 +27,14 @@
     <%= f.label :price_lteq, "~" %>
     <%= f.number_field :price_lteq %>
     <br />
+    
+    <%= check_box_tag :stock %>
+    <%= label_tag :stock, "在庫無しも含む" %>
+    <br />
+    
+    <%= check_box_tag :flag %>
+    <%= label_tag :flag, "販売停止を含む" %>
+    <br />
 <%= f.submit %>
 <% end %>
 
