@@ -1,5 +1,40 @@
 <h1><%= "商品一覧" %></h1>
 
+  <p>検索フォーム</p>
+
+  <%= search_form_for @q do |f| %>
+
+    <%= f.label :item_cont, "商品名" %>
+    <%= f.search_field :item_cont %>
+    <br />
+
+    <%= f.label :item_kana_cont, "商品名よみ" %>
+    <%= f.search_field :item_kana_cont %>
+    <br />
+
+    <%= f.label :stock_gteq, "在庫数" %>
+    <%= f.number_field :stock_gteq %>
+    <br />
+
+    <%= f.label :stock_lteq, "~" %>
+    <%= f.number_field :stock_lteq %>
+    <br />
+
+    <%= f.label :price_gteq, "価格" %>
+    <%= f.number_field :price_gteq %>
+    <br />
+
+    <%= f.label :price_lteq, "~" %>
+    <%= f.number_field :price_lteq %>
+    <br />
+<%= f.submit %>
+<% end %>
+
+
+
+
+
+
   <table border="1">
     <tr>
     <th>商品名</th>
