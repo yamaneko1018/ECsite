@@ -1,9 +1,18 @@
 <h1><%= "商品一覧" %></h1>
 
-<% @items.each do |item| %>
-  <p><%= item.item %></p>
-  <p><%= item.item_kana %></p>
-  <p><%= item.stock %></p>
-  <p><%= item.price %></p>
-  <p><%= item.flag %></p>
-<% end %>
+  <table border="1">
+    <tr>
+    <th>商品名</th>
+    <th>商品名(よみ)</th>
+    <th>在庫数</th>
+    <th>単価</th>
+    </tr>
+   <% @items.each do |item| %>
+    <tr>
+    <td><%= item.item %></td>
+    <td><%= item.item_kana %></td>
+    <td><%= item.stock %></td>
+    <td><%= item.price %></td>
+    </tr>
+   <% end %>
+  </table>
