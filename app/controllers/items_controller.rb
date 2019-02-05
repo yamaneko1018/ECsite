@@ -10,15 +10,28 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
+    @stock = Item.find(params[:id]).stock
   end
 
-  def create
-   @item = Item.new
-   if @item.save
-     redirect_to items_path
-   else
-     render 'show'
-   end
+
+  def confirm
   end
+
+  def update
+     @item = Item.find(params[:id])
+     @stock = @item.set_order(params[:item][:stock])
+     Rails.logger.debug @stock
+     if @item.update(stock: @stock)
+       redirect_to items_path
+     else
+       render 'show'
+     end
+  end
+
+
+  private
+    def item_params
+     params.require(:item).permit(:stock)
+    end
 
 end

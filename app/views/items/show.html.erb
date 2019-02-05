@@ -3,7 +3,9 @@
  <p>商品:<%= @item.item %><p>
  <p>詳細情報: <%= @item.detail %></p>
 
-<%= form_for(@item) do |f| %>
-<p>購入数</p> <%= f.number_field :stock,  min:1,max:9 %>
-<%= f.submit "購入する" %>
-<% end %>
+
+<%= form_for(@item)do |f| %>
+ <p>購入数</p> <%= f.number_field :stock,  min:1,max:9 %>
+ <%= f.submit "購入する" %>
+ <% end %>
+
