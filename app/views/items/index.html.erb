@@ -1,58 +1,56 @@
 <h1><%= "商品一覧" %></h1>
+        <p>検索フォーム</p>
 
-  <p>検索フォーム</p>
+        <%= search_form_for @q do |f| %>
+         <%= f.label :item_cont, "商品名" %>
+         <%= f.search_field :item_cont %>
+         <br />
+         <%= f.label :item_kana_cont, "商品名よみ" %>
+         <%= f.search_field :item_kana_cont %>
+         <br />
 
-  <%= search_form_for @q do |f| %>
-    <%= f.label :item_cont, "商品名" %>
-    <%= f.search_field :item_cont %>
-    <br />
-    <%= f.label :item_kana_cont, "商品名よみ" %>
-    <%= f.search_field :item_kana_cont %>
-    <br />
+         <%= f.label :stock_gteq, "在庫数" %>
+         <%= f.number_field :stock_gteq %>
+         <br />
 
-    <%= f.label :stock_gteq, "在庫数" %>
-    <%= f.number_field :stock_gteq %>
-    <br />
+         <%= f.label :stock_lteq, "~" %>
+         <%= f.number_field :stock_lteq %>
+         <br />
 
-    <%= f.label :stock_lteq, "~" %>
-    <%= f.number_field :stock_lteq %>
-    <br />
+         <%= f.label :price_gteq, "価格" %>
+         <%= f.number_field :price_gteq %>
+         <br />
 
-    <%= f.label :price_gteq, "価格" %>
-    <%= f.number_field :price_gteq %>
-    <br />
-
-    <%= f.label :price_lteq, "~" %>
-    <%= f.number_field :price_lteq %>
-    <br />
+         <%= f.label :price_lteq, "~" %>
+         <%= f.number_field :price_lteq %>
+         <br />
     
-    <%= f.check_box :stock_gteq %>
-    <%= f.label :stock, "在庫ありのもの" %>
-    <br />
+         <%= f.check_box :stock_gteq %>
+         <%= f.label :stock, "在庫ありのもの" %>
+         <br />
     
-    <%= f.check_box :flag_not_eq %>
-    <%= f.label :flag, "販売中" %>
-    <br />
-<%= f.submit %>
-<% end %>
+         <%= f.check_box :flag_not_eq %>
+         <%= f.label :flag, "販売中" %>
+         <br />
+         <%= f.submit %>
+       <% end %>
 
 
-
-  <table border="1">
-    <tr>
-    <th>商品名</th>
-    <th>商品名(よみ)</th>
-    <th>在庫数</th>
-    <th>単価</th>
-    <th>状態</th>
-    </tr>
-   <% @items.each do |item| %>
-    <tr>
-    <td><%= link_to item.item, item_path(item.id) %></td>
-    <td><%= item.item_kana %></td>
-    <td><%= item.stock %></td>
-    <td><%= item.price %></td>
-    <td><%= item.sale %></td>
-    </tr>
-   <% end %>
-  </table>
+        <table border="1" >
+        <tr>
+        <th>商品名</th>
+        <th>商品名(よみ)</th>
+        <th>在庫数</th>
+        <th>単価</th>
+        <th>状態</th>
+       </tr>
+       <% @items.each do |item| %>
+       <tr>
+       <td><%= link_to item.item, item_path(item.id) %></td>
+       <td><%= item.item_kana %></td>
+       <td><%= item.stock %></td>
+       <td><%= item.price %></td>
+       <td><%= item.sale %></td>
+       </tr>
+       <% end %>
+       </table >

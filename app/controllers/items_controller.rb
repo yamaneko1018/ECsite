@@ -9,5 +9,16 @@ class ItemsController < ApplicationController
 
 
   def show
+    @item = Item.find(params[:id])
   end
+
+  def create
+   @item = Item.new
+   if @item.save
+     redirect_to items_path
+   else
+     render 'show'
+   end
+  end
+
 end
