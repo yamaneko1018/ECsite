@@ -3,11 +3,9 @@
   <p>検索フォーム</p>
 
   <%= search_form_for @q do |f| %>
-
     <%= f.label :item_cont, "商品名" %>
     <%= f.search_field :item_cont %>
     <br />
-
     <%= f.label :item_kana_cont, "商品名よみ" %>
     <%= f.search_field :item_kana_cont %>
     <br />
@@ -28,18 +26,15 @@
     <%= f.number_field :price_lteq %>
     <br />
     
-    <%= check_box_tag :stock %>
-    <%= label_tag :stock, "在庫無しも含む" %>
+    <%= f.check_box :stock_gteq %>
+    <%= f.label :stock, "在庫ありのもの" %>
     <br />
     
-    <%= check_box_tag :flag %>
-    <%= label_tag :flag, "販売停止を含む" %>
+    <%= f.check_box :flag_not_eq %>
+    <%= f.label :flag, "販売中" %>
     <br />
 <%= f.submit %>
 <% end %>
-
-
-
 
 
 
@@ -49,13 +44,15 @@
     <th>商品名(よみ)</th>
     <th>在庫数</th>
     <th>単価</th>
+    <th>状態</th>
     </tr>
    <% @items.each do |item| %>
     <tr>
-    <td><%= item.item %></td>
+    <td><%= link_to item.item, item_path(item.id) %></td>
     <td><%= item.item_kana %></td>
     <td><%= item.stock %></td>
     <td><%= item.price %></td>
+    <td><%= item.sale %></td>
     </tr>
    <% end %>
   </table>
