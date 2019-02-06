@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :items, only:[:index,:new,:update,:show] do
+  resources :items, only:[:index,:update,:show]do
     collection do
-      post :confirm
+      get 'complete'
     end
   end
   root :to =>  'histories#index'

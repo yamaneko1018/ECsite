@@ -9,7 +9,7 @@
   </div>
 
   <div class="field">
-    <%= f.label :名前よみ %><br />
+    <%= f.label :名前ヨミ %><br />
     <%= f.text_field :username_kana, autofocus: true %>
   </div>
 
@@ -27,7 +27,7 @@
   <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <em>(<%= @minimum_password_length %> 文字以上英数字含む)</em>
     <% end %><br />
     <%= f.password_field :password, autocomplete: "new-password" %>
   </div>
