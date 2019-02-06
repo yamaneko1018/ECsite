@@ -1,11 +1,16 @@
+<% if @item.errors.any? %>
+ <%= @item.errors.messages %>
+<% end %>
+
 <h1>商品詳細情報</h1>
+
 
  <p>商品:<%= @item.item %><p>
  <p>詳細情報: <%= @item.detail %></p>
 
 
-<%= form_for(@item)do |f| %>
- <p>購入数</p> <%= f.number_field :stock,  min:1,max:9 %>
- <%= f.submit "購入する" %>
- <% end %>
+ <%= form_with(model: @item, local: true) do |f| %>
+   <p>購入数</p> <%= f.number_field :stock,  min:1,max:9 %>
+   <%= f.submit "購入する" %>
+ <% end %>  
 

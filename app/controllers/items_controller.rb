@@ -2,7 +2,6 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-#   binding.pry 
     @q = Item.ransack(params[:q])
     @items = @q.result
   end
@@ -14,18 +13,35 @@ class ItemsController < ApplicationController
   end
 
 
-  def confirm
+ # def confirm
+ #  logger.debug "------"
+ #  @item = Item.find(params[:id])
+ #  render :show if @item.invalid?
+ # end
+
+
+  def update 
+     a = item_params
+     logger.debug a
+#     binding.pry
+     @item = Item.find(params[:id])
+     stock = @item.set_order(params[:item][:stock])
+     @item.update(stock: stock)
+     if @item.invalid?
+     render :show
+     else 
+      buy = History.new
+      buy.user_id = current_user.id
+      buy.item_id = @item.id
+      buy.quantity = params[:item][:stock].to_i
+      buy.total_amount = @item.price * params[:item][:stock].to_i
+      buy.date = Time.now
+      buy.save
+      redirect_to complete_items_path
+     end
   end
 
-  def update
-     @item = Item.find(params[:id])
-     @stock = @item.set_order(params[:item][:stock])
-     Rails.logger.debug @stock
-     if @item.update(stock: @stock)
-       redirect_to items_path
-     else
-       render 'show'
-     end
+  def complete
   end
 
 

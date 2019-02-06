@@ -1,0 +1,9 @@
+<h3>以下の内容で確定する</h3>
+
+<%= form_for(@item) do |f| %>
+ <%= f.hidden_field :stock %>
+ 
+
+ <p>購入数</p> <%= f.number_field :stock,  min:1,max:9 %>
+ <%= f.submit "購入する" %>
+ <% end %>

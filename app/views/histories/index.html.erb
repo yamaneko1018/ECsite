@@ -1,7 +1,29 @@
 <h1><%= "マイページ" %></h1>
-<p class="flash"><%= notice %><%= alert %></p>
 
-<p><%= "購入履歴一覧" %></p>
-  <% @histories.each do |history| %>
-    <p><%= history.quantity %></p>
-  <% end %>
+ <p><%= "購入履歴一覧" %></p>
+ <div class="container">
+ <table class="table">
+  <div class="row">
+    <div class="col-md-offset3 col-md-6"> 
+         <tr>
+           <th>ユーザーID</th>
+           <th>商品ID</th>
+           <th>商品名</th>
+           <th>購入数</th>
+           <th>合計金額</th>
+           <th>購入日付</th>
+         </tr> 
+        <% @histories.each do |history| %>
+          <tr>
+            <td><%= history.user.id %></td>
+            <td><%= history.item.id %></td>
+            <td><%= history.item.item %></td>
+            <td><%= history.quantity %></td>
+            <td><%= history.total_amount %></td>
+            <td><%= history.date %></td>
+          </tr>
+        <% end %>
+    </div>
+  </div>
+ </table>
+ </div>
