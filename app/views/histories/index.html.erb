@@ -18,7 +18,7 @@
             <td><%= history.item.item %></td>
             <td><%= history.quantity %></td>
             <td><%= history.total_amount %></td>
-            <td><%= history.date %></td>
+            <td><%= history.date.strftime('%Y年%m月%d日 %H:%M') %></td>
           </tr>
         <% end %>
     </div>
