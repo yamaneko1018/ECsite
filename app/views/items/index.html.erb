@@ -13,11 +13,11 @@
          <br />
 
          <%= f.label :stock_gteq, "在庫数" %>
-         <%= f.number_field :stock_gteq, value:@stock %>
+         <%= f.number_field :stock_gteq, value:@item_stock %>
          <br />
 
          <%= f.label :stock_lteq, "~" %>
-         <%= f.number_field :stock_lteq, value:@stock %>
+         <%= f.number_field :stock_lteq, value:@item_stock %>
          <br />
 
          <%= f.label :price_gteq, "価格" %>
